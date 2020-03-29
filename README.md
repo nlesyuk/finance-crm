@@ -1,4 +1,4 @@
-# vue-crm
+# CRM front end app based on Vue JS-Freamwork 
 
 ## Project setup
 ```
