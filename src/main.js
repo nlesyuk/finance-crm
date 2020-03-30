@@ -1,14 +1,18 @@
-import Vue from 'vue';
+import Vue from 'vue'; // from node_modules
+import Vuelidate from 'vuelidate'; // from node_modules
 import App from './App.vue';
-import './registerServiceWorker';
 import dateFilter from '@/filters/date.filter'
 import router from './router';
 import store from './store';
-import 'materialize-css/dist/js/materialize.min';
+import './registerServiceWorker';
+import 'materialize-css/dist/js/materialize.min'; // from node_modules
+
 
 Vue.config.productionTip = false;
 
 Vue.filter('dateFilter', dateFilter)
+
+Vue.use(Vuelidate)
 
 new Vue({
   router,
