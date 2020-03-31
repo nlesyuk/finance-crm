@@ -64,6 +64,7 @@
 </template>
 <script>
 import { required, email, password, minLength } from 'vuelidate/lib/validators'
+import messages from '@/utils/messages'
 
 export default {
   name: 'login',
@@ -88,6 +89,14 @@ export default {
 
       // do something for login user
       // this.$router.push('/')
+    }
+  },
+  mounted() {
+    // берез из get Запроса сообщение /login?message=logout
+    let msg = messages[this.$route.query.message];
+    if (msg) {
+      // по ключу logout вытягиваем сообщение
+      this.$message(msg)
     }
   }
 }
