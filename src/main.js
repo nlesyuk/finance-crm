@@ -3,7 +3,7 @@ import Vuelidate from 'vuelidate'; // from node_modules
 import App from './App.vue';
 import dateFilter from '@/filters/date.filter'
 import router from './router';
-import store from './store';
+import store from './store/store';
 import messagePlugin from '@/utils/message.plugin'
 import './registerServiceWorker';
 import 'materialize-css/dist/js/materialize.min'; // from node_modules

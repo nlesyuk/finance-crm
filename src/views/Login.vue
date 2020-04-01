@@ -77,7 +77,7 @@ export default {
     password: {required, minLength: minLength(6)},
   },
   methods: {
-    submitHandler () {
+    async submitHandler () {
       if (this.$v.$invalid) {
         this.$v.$touch()
         return
@@ -87,8 +87,12 @@ export default {
         password: this.password,
       }
 
-      // do something for login user
-      // this.$router.push('/')
+      try {
+        await this.$store.dispatch('login', formData)
+        this.$router.push('/')
+      } catch(e) {
+        // handle error in store
+      }
     }
   },
   mounted() {
