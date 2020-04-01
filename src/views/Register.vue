@@ -110,7 +110,7 @@ export default {
     agree: { check: v => v },
   },
   methods: {
-    submitRegister() {
+    async submitRegister() {
       if (this.$v.$invalid) {
         this.$v.$touch() // launch validation
         return
@@ -122,8 +122,12 @@ export default {
         password: this.password,
       }
 
-      console.log(formData)
-      this.$router.push('/')
+      try {
+        await this.$store.dispatch('register', formData)
+        this.$router.push('/')
+      } catch(e) {
+        // error handles in store
+      }
     }
   }
 }
