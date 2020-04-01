@@ -10,7 +10,11 @@ export default {
       } catch (e) {
         throw e
       }
-
+    },
+    async logout({dispatch, commit}) {
+      try {
+        await firebase.auth().signOut()
+      } catch(e) {}
     }
   },
 }
