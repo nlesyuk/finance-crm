@@ -17,7 +17,7 @@
               data-target="dropdown"
               ref="dropdown"
           >
-            USER NAME
+            {{ name }}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
 
@@ -53,8 +53,12 @@ export default {
       this.$router.push('/login?message=logout')
     }
   },
+  computed: {
+    name() {
+      return this.$store.getters.info.name
+    }
+  },
   mounted() {
-    // console.log(this.$refs.dropdown)
     // init dropdown (see in documentation for materialize)
     this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: true
