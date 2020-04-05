@@ -38,6 +38,6 @@
 </template>
 <script>
 export default {
-  name: 'category edit'
+  name: 'category-edit'
 }
 </script>
