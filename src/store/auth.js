@@ -35,6 +35,7 @@ export default {
     async logout({dispatch, commit}) {
       try {
         await firebase.auth().signOut()
+        commit('clearInfo')
       } catch(e) {}
     }
   },
