@@ -8,9 +8,13 @@
       </button>
     </div>
 
-    <div class="row">
+  <Loader v-if="loading" />
 
-      <HomeBill />
+    <div  v-else class="row">
+
+      <HomeBill
+         :rates="currency.rates"
+      />
 
       <HomeCurrency />
 
@@ -24,9 +28,18 @@ import HomeCurrency from '@/components/HomeCurrency'
 
 export default {
   name: 'Home',
+  data: () => ({
+    loading: true,
+    currency: null
+  }),
   components: {
     HomeBill,
     HomeCurrency
+  },
+  async mounted(){
+    this.currency = await this.$store.dispatch('fetchCurrency')
+    console.log(this.currency)
+    this.loading = false
   }
 };
 </script>

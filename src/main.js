@@ -2,11 +2,13 @@ import Vue from 'vue'; // from node_modules
 import Vuelidate from 'vuelidate'; // from node_modules
 import App from './App.vue';
 import dateFilter from '@/filters/date.filter'
+import currencyFilter from '@/filters/currency.filter'
 import router from './router';
 import store from './store/store';
 import messagePlugin from '@/utils/message.plugin'
 import './registerServiceWorker';
 import 'materialize-css/dist/js/materialize.min'; // from node_modules
+import Loader from './components/app/Loader'
 
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -15,10 +17,11 @@ import 'firebase/database'
 Vue.config.productionTip = false;
 
 Vue.filter('dateFilter', dateFilter)
+Vue.filter('currencyFilter', currencyFilter)
 
 Vue.use(messagePlugin)
 Vue.use(Vuelidate)
-
+Vue.component('Loader', Loader)
 
 const firebaseConfig = {
   apiKey: "AIzaSyDJWjn5rgRsfM6Fhjz4wJnBRtMZfjolt8U",
