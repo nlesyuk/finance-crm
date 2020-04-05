@@ -13,5 +13,5 @@ export default function dateFilter(value, format = 'date') {
   }
 
   // 'uk-UK' show as Ukrainian language
-  return new Intl.DateTimeFormat('ru-RU', options).format(value)
+  return new Intl.DateTimeFormat('ru-RU', options).format( new Date(value))
 }
