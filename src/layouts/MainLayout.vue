@@ -1,5 +1,10 @@
 <template>
-  <div class="app-main-layout">
+<div>
+  <Loader v-if="loading" />
+  <div
+    v-else
+    class="app-main-layout"
+  >
 
     <Navbar @burgerClick="isOpen = !isOpen" />
 
@@ -7,9 +12,7 @@
 
     <main class="app-content" :class="{full: !isOpen}">
       <div class="app-page">
-
         <router-view/>
-
       </div>
     </main>
 
@@ -20,6 +23,7 @@
     </div>
 
   </div>
+</div>
 </template>
 <script>
 import Navbar from '@/components/app/Navbar';
@@ -29,6 +33,7 @@ export default {
   name: 'main-layout',
   data: () => ({
     isOpen: false,
+    loading: true,
   }),
   components: {
     Navbar,
@@ -38,6 +43,7 @@ export default {
      if ( !Object.keys(this.$store.getters.info).length ) {
        await this.$store.dispatch('fetchInfo')
      }
+     this.loading = false
   }
 }
 </script>
