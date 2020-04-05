@@ -24,7 +24,7 @@ Vue.use(Vuelidate)
 Vue.component('Loader', Loader)
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDJWjn5rgRsfM6Fhjz4wJnBRtMZfjolt8U",
+  apiKey: process.env.VUE_APP_FIREBASE,
   authDomain: "vue-fincrm-173a0.firebaseapp.com",
   databaseURL: "https://vue-fincrm-173a0.firebaseio.com",
   projectId: "vue-fincrm-173a0",
