@@ -5,6 +5,7 @@ import dateFilter from '@/filters/date.filter'
 import currencyFilter from '@/filters/currency.filter'
 import router from './router';
 import store from './store/store';
+import tooltipDirective from '@/directives/tooltip.directive';
 import messagePlugin from '@/utils/message.plugin'
 import './registerServiceWorker';
 import 'materialize-css/dist/js/materialize.min'; // from node_modules
@@ -18,10 +19,10 @@ Vue.config.productionTip = false;
 
 Vue.filter('dateFilter', dateFilter)
 Vue.filter('currencyFilter', currencyFilter)
-
 Vue.use(messagePlugin)
 Vue.use(Vuelidate)
 Vue.component('Loader', Loader)
+Vue.directive('tooltip', tooltipDirective)
 
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_FIREBASE,
