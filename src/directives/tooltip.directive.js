@@ -1,8 +1,11 @@
 export default {
-  bind(el, {value}) {
+  bind(el, binding) {
+    const text = binding.value.text ? binding.value.text : binding.value
+    const position = binding.value.position ? binding.value.position : 'top'
+
     M.Tooltip.init(el, {
-      html: value,
-      position: 'top',
+      html: text,
+      position: position,
     })
   },
   unbind(el) {
