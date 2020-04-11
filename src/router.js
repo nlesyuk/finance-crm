@@ -52,7 +52,7 @@ const router = new VueRouter({
       component: () => import('@/views/Record.vue'),
     },
     {
-      path: '/detailrecord',
+      path: '/detail/:id',
       name: 'detailrecord',
       meta: { layout: 'main', auth: true },
       component: () => import('@/views/DetailRecord.vue'),
