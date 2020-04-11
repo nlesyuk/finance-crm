@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
-    "firebase": "^7.13.1",
+    "firebase": "^7.14.0",
+    "lodash": "^4.17.15",
     "materialize-css": "^1.0.0-rc.2",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
+    "vuejs-paginate": "^2.1.0",
     "vuelidate": "^0.7.5",
     "vuex": "^3.1.2"
   },

@@ -11,17 +11,30 @@
     <Loader v-if="loading" />
 
     <p class="center" v-else-if="!records.length">
-      Записсей пока нет.
+      Записей пока нет.
       <router-link to="record">Добавить новую запись</router-link>
     </p>
 
     <section v-else>
-      <HistoryTable :records="records"/>
+
+      <HistoryTable :records="items"/>
+
+      <Paginate
+        v-model="page"
+        :pageCount="pageCount"
+        :clickHandler="pageChangeHandler"
+        :prevText="'Назад'"
+        :nextText="'Вперед'"
+        :containerClass="'pagination'"
+        :pageClass="'waves-effect'"
+      />
+
     </section>
   </div>
 </template>
 
 <script>
+import paginationsMixin from '@/mixins/paginations.mixin'
 import HistoryTable from '@/components/HistoryTable'
 
 export default {
@@ -29,27 +42,31 @@ export default {
   data: () => ({
     loading: true,
     records: [],
-    categories: [],
+    // from mixin:
+    // page: 1, // page by default
+    // pageSize: 5, // item per page
+    // pageCount: 0, // we don't know
+    // allItems: [], // all items
+    // items: [], // allItems / PageSize
   }),
+  mixins: [paginationsMixin],
   components: {
     HistoryTable
   },
   async mounted() {
-    // this.records = await this.$store.dispatch('fetchRecords')
-    const records = await this.$store.dispatch('fetchRecords')
-    this.categories = await this.$store.dispatch('fetchCategories')
-    console.log(records)
-    console.log(this.categories)
+    this.records = await this.$store.dispatch('fetchRecords')
+    const categories = await this.$store.dispatch('fetchCategories')
 
-    this.records = records.map(record => {
+    const records = this.records.map(record => {
       return {
         ...record,
-        categoryName: this.categories.find(cat => cat.id === record.categoryId).title,
+        categoryName: categories.find(cat => cat.id === record.categoryId).title,
         typeClass: record.type === 'income' ? 'green' : 'red',
         typeText: record.type === 'income' ? 'Доход' : 'Расход',
       }
     })
 
+    this.setupPagination(records) // from mixin
     this.loading = false
   }
 }
