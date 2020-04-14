@@ -5,7 +5,7 @@
     </div>
 
     <div class="history-chart">
-      <canvas></canvas>
+      <canvas ref="canvas"></canvas>
     </div>
 
     <Loader v-if="loading" />
@@ -36,9 +36,11 @@
 <script>
 import paginationsMixin from '@/mixins/paginations.mixin'
 import HistoryTable from '@/components/HistoryTable'
+import {Pie} from 'vue-chartjs'
 
 export default {
   name: 'history',
+  extends: Pie,
   data: () => ({
     loading: true,
     records: [],
@@ -53,20 +55,53 @@ export default {
   components: {
     HistoryTable
   },
+  methods: {
+    setup(categories) {
+      const records = this.records.map(record => {
+        return {
+          ...record,
+          categoryName: categories.find(cat => cat.id === record.categoryId).title,
+          typeClass: record.type === 'income' ? 'green' : 'red',
+          typeText: record.type === 'income' ? 'Доход' : 'Расход',
+        }
+      })
+      console.log(records)
+      this.setupPagination(records) // from mixin
+
+      // setup chart
+      // cant myself init chart, but chart init by itself, must be <canvas ref="canvas"></canvas>
+      this.renderChart({
+          labels: categories.map(c => c.title),
+          datasets: [{
+              label: 'Расходы по категориям',
+              data: categories.map(c => {
+                return this.records.reduce((total, r) => {
+                  if (r.categoryId === c.id && r.type === 'outcome') {
+                    total += r.amount
+                  }
+                  return total
+                }, 0)
+              }),
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderWidth: 1
+          }]
+      })
+
+    }
+  },
   async mounted() {
     this.records = await this.$store.dispatch('fetchRecords')
     const categories = await this.$store.dispatch('fetchCategories')
 
-    const records = this.records.map(record => {
-      return {
-        ...record,
-        categoryName: categories.find(cat => cat.id === record.categoryId).title,
-        typeClass: record.type === 'income' ? 'green' : 'red',
-        typeText: record.type === 'income' ? 'Доход' : 'Расход',
-      }
-    })
+    this.setup(categories)
 
-    this.setupPagination(records) // from mixin
     this.loading = false
   }
 }
