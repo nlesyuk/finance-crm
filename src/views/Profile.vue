@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Профиль</h3>
+      <h3>{{ 'ProfileTitle' | localizeFilter }}</h3>
     </div>
 
     <form class="form" @submit.prevent="submitHandler">
@@ -10,25 +10,25 @@
           v-model="name"
           :class="{invalid: $v.name.$dirty && !$v.name.required}"
         />
-        <label for="description">Имя</label>
+        <label for="description">{{ 'Name' | localizeFilter }}</label>
         <small
           class="helper-text invalid"
           v-if="$v.name.$dirty && !$v.name.required"
-        >Введите имя</small>
+        >{{ 'EnterName' | localizeFilter }}</small>
 
       </div>
 
       <div class="switch">
         <label>
-          Off
-          <input type="checkbox" />
+          RU
+          <input type="checkbox" v-model="isEngLocale" />
           <span class="lever"></span>
-          On
+          EN
         </label>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Обновить
+        {{ 'Update' | localizeFilter }}
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -43,7 +43,7 @@ export default {
   name: 'profile',
   data: () => ({
     name: '',
-    inputName: null
+    isEngLocale: false,
   }),
   computed: {
     ...mapGetters(['info'])
@@ -57,14 +57,11 @@ export default {
         this.$v.$touch()
         return
       }
-      // const formData = {
-      //   email: this.email,
-      //   password: this.password,
-      // }
 
       try {
         await this.$store.dispatch('updateInfo', {
           name: this.name,
+          locale: this.isEngLocale ? 'en-US' : 'ru-RU',
         })
       } catch(e) {
         // handle error in store
@@ -74,7 +71,7 @@ export default {
   mounted() {
     // this.name = this.info.name
     this.name = this.$store.getters.info.name
-
+    this.isEngLocale = this.$store.getters.info.locale === 'en-US'
     setTimeout(() => {
       M.updateTextFields()
     }, 0)

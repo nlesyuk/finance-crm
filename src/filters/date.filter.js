@@ -1,3 +1,5 @@
+import store from '@/store/store'
+
 export default function dateFilter(value, format = 'date') {
   const options = {}
 
@@ -13,5 +15,6 @@ export default function dateFilter(value, format = 'date') {
   }
 
   // 'uk-UK' show as Ukrainian language
-  return new Intl.DateTimeFormat('ru-RU', options).format( new Date(value))
+  const locale = store.getters.info.locale || 'en-US'
+  return new Intl.DateTimeFormat(locale, options).format( new Date(value))
 }
