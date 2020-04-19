@@ -19,6 +19,15 @@
     "HistoryRecords": "История записей",
     "DontHaveRecords": "Записей пока нет.",
     "AddRecords": "Добавить новую запись",
+    "DontHaveCategories": "Категорий пока нет.",
+    "AddCategory": "Добавить новую категорию",
+    "ExceededOn": "Превышен на",
+    "Left": "Осталось",
+    "From": "из",
+
+
+
+
     "Income": "Доход",
     "Outcome": "Расход",
     "CurrencyAccount": "Счет в валюте",

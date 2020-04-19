@@ -19,6 +19,16 @@
     "HistoryRecords": "History records",
     "DontHaveRecords": "Don't have records.",
     "AddRecords": "Add new record",
+    "DontHaveCategories": "Don't have categories.",
+    "AddCategory": "Add new category",
+    "ExceededOn": "Exceeded on",
+    "Left": "Left",
+    "From": "from",
+
+
+
+
+
     "Income": "Income",
     "Outcome": "Outcome",
     "CurrencyAccount": "Currency account",
