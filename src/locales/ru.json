@@ -20,5 +20,9 @@
     "DontHaveRecords": "Записей пока нет.",
     "AddRecords": "Добавить новую запись",
     "Income": "Доход",
-    "Outcome": "Расход"
+    "Outcome": "Расход",
+    "CurrencyAccount": "Счет в валюте",
+    "ExchangeRate": "Курс валют",
+    "Currency": "Валюта",
+    "Rate": "Курс"
 }

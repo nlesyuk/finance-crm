@@ -20,5 +20,9 @@
     "DontHaveRecords": "Don't have records.",
     "AddRecords": "Add new record",
     "Income": "Income",
-    "Outcome": "Outcome"
+    "Outcome": "Outcome",
+    "CurrencyAccount": "Currency account",
+    "ExchangeRate": "Exchange rate",
+    "Currency": "Currency",
+    "Rate": "Rate"
 }
