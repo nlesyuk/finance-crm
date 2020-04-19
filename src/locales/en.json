@@ -7,5 +7,18 @@
     "Menu_History": "History",
     "Menu_Planning": "Planning",
     "Menu_NewRecord": "New record",
-    "Menu_Categories": "Categories"
+    "Menu_Categories": "Categories",
+    "Sum": "Sum",
+    "Date": "Date",
+    "Category": "Category",
+    "Type": "Type",
+    "Open": "Open",
+    "More": "More",
+    "Next": "Next",
+    "Back": "Back",
+    "HistoryRecords": "History records",
+    "DontHaveRecords": "Don't have records.",
+    "AddRecords": "Add new record",
+    "Income": "Income",
+    "Outcome": "Outcome"
 }

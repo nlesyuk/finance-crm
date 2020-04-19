@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>{{ 'HistoryRecords' | localizeFilter }}</h3>
     </div>
 
     <div class="history-chart">
@@ -11,8 +11,8 @@
     <Loader v-if="loading" />
 
     <p class="center" v-else-if="!records.length">
-      Записей пока нет.
-      <router-link to="record">Добавить новую запись</router-link>
+      {{'DontHaveRecords'|localizeFilter}}
+      <router-link to="record">{{'AddRecords'|localizeFilter}}</router-link>
     </p>
 
     <section v-else>
@@ -23,8 +23,8 @@
         v-model="page"
         :pageCount="pageCount"
         :clickHandler="pageChangeHandler"
-        :prevText="'Назад'"
-        :nextText="'Вперед'"
+        :prevText="Next"
+        :nextText="Back"
         :containerClass="'pagination'"
         :pageClass="'waves-effect'"
       />
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import localizeFilter from '@/filters/localize.filter'
 import paginationsMixin from '@/mixins/paginations.mixin'
 import HistoryTable from '@/components/HistoryTable'
 import {Pie} from 'vue-chartjs'
@@ -55,17 +56,21 @@ export default {
   components: {
     HistoryTable
   },
+  computed: {
+    Next() { return localizeFilter('Next') },
+    Back() { return localizeFilter('Back') },
+  },
   methods: {
     setup(categories) {
       const records = this.records.map(record => {
+        // debugger
         return {
           ...record,
           categoryName: categories.find(cat => cat.id === record.categoryId).title,
           typeClass: record.type === 'income' ? 'green' : 'red',
-          typeText: record.type === 'income' ? 'Доход' : 'Расход',
+          typeText: record.type === 'income' ? localizeFilter('Income') : localizeFilter('Outcome'),
         }
       })
-      console.log(records)
       this.setupPagination(records) // from mixin
 
       // setup chart

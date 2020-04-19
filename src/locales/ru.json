@@ -7,5 +7,18 @@
     "Menu_History": "История",
     "Menu_Planning": "Планирование",
     "Menu_NewRecord": "Новая запись",
-    "Menu_Categories": "Категории"
+    "Menu_Categories": "Категории",
+    "Sum": "Сумма",
+    "Date": "Дата",
+    "Category": "Категория",
+    "Type": "Тип",
+    "Open": "Открыть",
+    "More": "Подробнее",
+    "Next": "Вперед",
+    "Back": "Назад",
+    "HistoryRecords": "История записей",
+    "DontHaveRecords": "Записей пока нет.",
+    "AddRecords": "Добавить новую запись",
+    "Income": "Доход",
+    "Outcome": "Расход"
 }
