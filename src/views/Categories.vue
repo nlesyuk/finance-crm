@@ -2,7 +2,7 @@
   <div>
 
     <div class="page-title">
-      <h3>Категории</h3>
+      <h3>{{'Categories'| localizeFilter }}</h3>
     </div>
 
     <Loader v-if="loading" />
@@ -23,7 +23,7 @@
           - когда categories обновится
         -->
         <div v-else class="page-subtitle">
-          <h4>Категорий пока нет</h4>
+          <h4>{{'DontHaveCategories'| localizeFilter}}</h4>
         </div>
       </div>
     </section>

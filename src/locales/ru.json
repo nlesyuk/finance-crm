@@ -11,6 +11,7 @@
     "Sum": "Сумма",
     "Date": "Дата",
     "Category": "Категория",
+    "Categories": "Категории",
     "Type": "Тип",
     "Open": "Открыть",
     "More": "Подробнее",
@@ -29,8 +30,11 @@
     "EnterDescription": "Введите описание",
     "Create": "Создать",
     "NewRecord": "Новая запись",
-
-
+    "Title": "Название",
+    "EnterTitle": "Введите название",
+    "Limit": "Лимит",
+    "MinimumValue": "Minimum value",
+    "Edit": "Редактирование",
 
 
     "Income": "Доход",
