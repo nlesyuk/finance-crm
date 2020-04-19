@@ -97,6 +97,11 @@ import {required, minLength, maxLength, email, password} from 'vuelidate/lib/val
 
 export default {
   name: 'register',
+  metaInfo() {
+    return {
+      title: this.$title('Register')
+    }
+  },
   data: () => ({
     name: '',
     email: '',

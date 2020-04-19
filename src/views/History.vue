@@ -41,6 +41,11 @@ import {Pie} from 'vue-chartjs'
 
 export default {
   name: 'history',
+  metaInfo() {
+    return {
+      title: this.$title('History')
+    }
+  },
   extends: Pie,
   data: () => ({
     loading: true,
