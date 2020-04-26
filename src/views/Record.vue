@@ -121,7 +121,6 @@ export default {
     async submitHandler() {
       if(this.$v.$invalid) {
         this.$v.$touch()
-        console.log(this.$v.amount)
         return
       }
 
