@@ -1,3 +1,12 @@
+[Live Preview](https://vue-fincrm-173a0.firebaseapp.com/)
+
+Credential:
+* login: pronaza@gmail.com
+* pass: 123456
+
+**PS:** Bill component doesn't work because server which I used only support https in a pay plan :(
+
+
 # CRM front end app based on Vue JS-Freamwork 
 
 ## Project setup
